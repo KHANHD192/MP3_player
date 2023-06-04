@@ -1,0 +1,9 @@
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+.player{
+    max-width: 800px;
+    max-height: 600px;
+    background-color: antiquewhite;
+}

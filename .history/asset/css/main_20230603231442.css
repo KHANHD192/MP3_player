@@ -1,0 +1,41 @@
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+.player{
+    margin:30px auto;
+    width: 400px;
+    height: 500px;
+    border-radius: 15px;
+    background-color: aqua;
+}
+.dashboard{
+    margin: 0 auto;
+    width: 400px;
+    height: 200px;
+    background-color: #fff;
+    position: fixed;
+}
+header{
+    padding-top:12px;
+    text-align: center;
+    font-size: 1.4rem;
+}
+header h4{
+    color: rgb(224, 16, 51);
+}
+header h2 {
+    font-weight: bold;
+}
+.cd{
+    width: 100%;
+    position: relative;
+}
+.cd-thumb {
+    width: 20%;
+    padding-top: 60%;
+    border-radius: 50%;
+    background-color: #333;
+    background-size: cover;
+    margin: auto;
+  }
