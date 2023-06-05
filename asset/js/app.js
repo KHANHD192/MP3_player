@@ -91,7 +91,7 @@ const app  = {
   ];
   
   const Timming = {
-    duration: 4000,
+    duration: 6000,
     iterations: Infinity,
   };
   // creat item of cdThumb animation rotate!
