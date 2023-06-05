@@ -14,34 +14,30 @@ const progress = $('.progress');
 let playing = false;
 const app  = {
     currentIndex : 0,
-    songs : [  
+    songs : [
         {
-            name :'Miễn là cùng nhau',
-            singer :"Sean",
-            path : './asset/music/song4.mp3',
-            image :'./asset/image/song0.jpg',
-            
-        },
-        {
-            name :'Rồi ta sẽ ngắm pháo hoa cùng nhau',
-            singer :"JUN DD",
-            path : './asset/music/song3.mp3',
-            image :'./asset/image/song1.jpg',
-            
+            name :'Cầu Vồng Khuyết',
+            singer :"CARA, Hoàng Duyên",
+            path : './asset/music/song1.mp3',
+            id : 0,
         },
         {
             name :'Hè Sang',
             singer :"FBBOIZ",
             path : './asset/music/song2.mp3',
-            image :'./asset/image/song2.jpg',
-           
+            id : 1,
         },
         {
-            name :'Cầu Vồng Khuyết',
-            singer :"CARA, Hoàng Duyên",
-            path : './asset/music/song1.mp3',
-            image :'./asset/image/song3.jpg',
-            
+            name :'Rồi ta sẽ ngắm pháo hoa cùng nhau',
+            singer :"JUN DD",
+            path : './asset/music/song3.mp3',
+            id : 2,
+        },
+        {
+            name :'Miễn là cùng nhau',
+            singer :"Sean",
+            path : './asset/music/song4.mp3',
+            id:3,
         },
    ],
    render : function(){
@@ -56,7 +52,7 @@ const app  = {
             <span class="singer">${song.singer} </span>
         </div>
      </div>` 
-      playlist.insertAdjacentHTML('beforeend',template);
+      playlist.insertAdjacentHTML('afterbegin',template);
        }
        this.songs.forEach(item =>{
           creat(item);
@@ -66,7 +62,6 @@ const app  = {
     loadCurrentSong : function(){
       audio.src= this.songs[this.currentIndex].path;
       nameSong.innerText = this.songs[this.currentIndex].name;
-      cdThumb.style.backgroundImage = `url(${this.songs[this.currentIndex].image})`;
     },
     playing : function(){
         this.loadCurrentSong();
@@ -98,22 +93,19 @@ const app  = {
   let cd ;
   cd = cdThumb.animate(cd_rotate,Timming);
   cd.pause();
-  function changeIconPlay(){
-    document.querySelector('.icon-play').classList.remove('unactive');
-    document.querySelector('.icon-pause').classList.add('unactive');
-  }
   //handle next and pre song 
    function nextSong() {
     if(app.currentIndex < app.songs.length - 1){
         app.currentIndex++;  
         cd.pause();
         playing = false;
-        changeIconPlay();
+        document.querySelector('.icon-play').classList.remove('unactive');
+        document.querySelector('.icon-pause').classList.add('unactive');
         app.loadCurrentSong(); 
         
         setTimeout(function(){
           audio.play();
-        },1000);
+        },1500);
      }
    }
 
@@ -122,12 +114,13 @@ const app  = {
             app.currentIndex--;  
             cd.pause();
             playing = false;
-            changeIconPlay();
+            document.querySelector('.icon-play').classList.remove('unactive');
+            document.querySelector('.icon-pause').classList.add('unactive');
             app.loadCurrentSong(); 
       
             setTimeout(function(){
               audio.play();
-            },1000);
+            },1500);
          }
     }
   pre.addEventListener('click',preSong);
@@ -168,32 +161,11 @@ const app  = {
      playlist.addEventListener('click',handleSelector);
      
      function handleSelector(e){
-         const listItem  = playlist.children ;
-         let index = [...listItem].findIndex((item)=>{
-            return item.contains(e.target);
-         });
-          //handl change color 
-         listItem[index].classList.add('active');
-         if(app.currentIndex !== index){
-            listItem[app.currentIndex].classList.remove('active');
-         }
-         //handle change song !
-         app.currentIndex=index; 
-         cd.pause();
-         playing = false;
-         changeIconPlay();
-         app.loadCurrentSong(); 
-         
-         setTimeout(function(){
-           audio.play();
-         },1000);     
-         
-    
-      }
+          
+            console.log(playlist.children);
+            console.log(playlist.children[1].contains(e.target));
         
-     
-      
-     
+     }
 },
    start : function(){
       app.render();

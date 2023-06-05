@@ -66,7 +66,7 @@ const app  = {
     loadCurrentSong : function(){
       audio.src= this.songs[this.currentIndex].path;
       nameSong.innerText = this.songs[this.currentIndex].name;
-      cdThumb.style.backgroundImage = `url(${this.songs[this.currentIndex].image})`;
+      cdThumb.style.backgroundImage = "url(`${this.songs[this.currentIndex].image}`)";
     },
     playing : function(){
         this.loadCurrentSong();

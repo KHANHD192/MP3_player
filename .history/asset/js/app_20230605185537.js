@@ -19,29 +19,25 @@ const app  = {
             name :'Miễn là cùng nhau',
             singer :"Sean",
             path : './asset/music/song4.mp3',
-            image :'./asset/image/song0.jpg',
-            
+            id:3,
         },
         {
             name :'Rồi ta sẽ ngắm pháo hoa cùng nhau',
             singer :"JUN DD",
             path : './asset/music/song3.mp3',
-            image :'./asset/image/song1.jpg',
-            
+            id : 2,
         },
         {
             name :'Hè Sang',
             singer :"FBBOIZ",
             path : './asset/music/song2.mp3',
-            image :'./asset/image/song2.jpg',
-           
+            id : 1,
         },
         {
             name :'Cầu Vồng Khuyết',
             singer :"CARA, Hoàng Duyên",
             path : './asset/music/song1.mp3',
-            image :'./asset/image/song3.jpg',
-            
+            id : 0,
         },
    ],
    render : function(){
@@ -66,7 +62,6 @@ const app  = {
     loadCurrentSong : function(){
       audio.src= this.songs[this.currentIndex].path;
       nameSong.innerText = this.songs[this.currentIndex].name;
-      cdThumb.style.backgroundImage = `url(${this.songs[this.currentIndex].image})`;
     },
     playing : function(){
         this.loadCurrentSong();
@@ -98,7 +93,7 @@ const app  = {
   let cd ;
   cd = cdThumb.animate(cd_rotate,Timming);
   cd.pause();
-  function changeIconPlay(){
+  function handl(){
     document.querySelector('.icon-play').classList.remove('unactive');
     document.querySelector('.icon-pause').classList.add('unactive');
   }
@@ -108,7 +103,7 @@ const app  = {
         app.currentIndex++;  
         cd.pause();
         playing = false;
-        changeIconPlay();
+        handl();
         app.loadCurrentSong(); 
         
         setTimeout(function(){
@@ -122,7 +117,8 @@ const app  = {
             app.currentIndex--;  
             cd.pause();
             playing = false;
-            changeIconPlay();
+            document.querySelector('.icon-play').classList.remove('unactive');
+            document.querySelector('.icon-pause').classList.add('unactive');
             app.loadCurrentSong(); 
       
             setTimeout(function(){
@@ -181,7 +177,8 @@ const app  = {
          app.currentIndex=index; 
          cd.pause();
          playing = false;
-         changeIconPlay();
+         document.querySelector('.icon-play').classList.remove('unactive');
+         document.querySelector('.icon-pause').classList.add('unactive');
          app.loadCurrentSong(); 
          
          setTimeout(function(){

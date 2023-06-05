@@ -21,27 +21,28 @@ const app  = {
             path : './asset/music/song4.mp3',
             image :'./asset/image/song0.jpg',
             
+            id:3,
         },
         {
             name :'Rồi ta sẽ ngắm pháo hoa cùng nhau',
             singer :"JUN DD",
             path : './asset/music/song3.mp3',
-            image :'./asset/image/song1.jpg',
-            
+            image :'./asset/image/song0.jpg'
+            id : 2,
         },
         {
             name :'Hè Sang',
             singer :"FBBOIZ",
             path : './asset/music/song2.mp3',
-            image :'./asset/image/song2.jpg',
-           
+            image :'./asset/image/song0.jpg'
+            id : 1,
         },
         {
             name :'Cầu Vồng Khuyết',
             singer :"CARA, Hoàng Duyên",
             path : './asset/music/song1.mp3',
-            image :'./asset/image/song3.jpg',
-            
+            image :'./asset/image/song0.jpg'
+            id : 0,
         },
    ],
    render : function(){
@@ -66,7 +67,6 @@ const app  = {
     loadCurrentSong : function(){
       audio.src= this.songs[this.currentIndex].path;
       nameSong.innerText = this.songs[this.currentIndex].name;
-      cdThumb.style.backgroundImage = `url(${this.songs[this.currentIndex].image})`;
     },
     playing : function(){
         this.loadCurrentSong();

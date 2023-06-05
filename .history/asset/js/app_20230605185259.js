@@ -19,29 +19,25 @@ const app  = {
             name :'Miễn là cùng nhau',
             singer :"Sean",
             path : './asset/music/song4.mp3',
-            image :'./asset/image/song0.jpg',
-            
+            id:3,
         },
         {
             name :'Rồi ta sẽ ngắm pháo hoa cùng nhau',
             singer :"JUN DD",
             path : './asset/music/song3.mp3',
-            image :'./asset/image/song1.jpg',
-            
+            id : 2,
         },
         {
             name :'Hè Sang',
             singer :"FBBOIZ",
             path : './asset/music/song2.mp3',
-            image :'./asset/image/song2.jpg',
-           
+            id : 1,
         },
         {
             name :'Cầu Vồng Khuyết',
             singer :"CARA, Hoàng Duyên",
             path : './asset/music/song1.mp3',
-            image :'./asset/image/song3.jpg',
-            
+            id : 0,
         },
    ],
    render : function(){
@@ -66,7 +62,6 @@ const app  = {
     loadCurrentSong : function(){
       audio.src= this.songs[this.currentIndex].path;
       nameSong.innerText = this.songs[this.currentIndex].name;
-      cdThumb.style.backgroundImage = `url(${this.songs[this.currentIndex].image})`;
     },
     playing : function(){
         this.loadCurrentSong();
@@ -98,9 +93,10 @@ const app  = {
   let cd ;
   cd = cdThumb.animate(cd_rotate,Timming);
   cd.pause();
-  function changeIconPlay(){
+  function changeIcon(){
     document.querySelector('.icon-play').classList.remove('unactive');
     document.querySelector('.icon-pause').classList.add('unactive');
+    console.log('haha');
   }
   //handle next and pre song 
    function nextSong() {
@@ -108,12 +104,12 @@ const app  = {
         app.currentIndex++;  
         cd.pause();
         playing = false;
-        changeIconPlay();
+        changeIcon();
         app.loadCurrentSong(); 
         
         setTimeout(function(){
           audio.play();
-        },1000);
+        },1500);
      }
    }
 
@@ -122,27 +118,25 @@ const app  = {
             app.currentIndex--;  
             cd.pause();
             playing = false;
-            changeIconPlay();
+            changeIcon();
             app.loadCurrentSong(); 
       
             setTimeout(function(){
               audio.play();
-            },1000);
+            },1500);
          }
     }
   pre.addEventListener('click',preSong);
   next.addEventListener('click',nextSong);
     // handle play-pause
     audio.addEventListener('play',function(){ 
-        document.querySelector('.icon-play').classList.add('unactive');
-        document.querySelector('.icon-pause').classList.remove('unactive');
+        changeIcon();
            cd.play();
            fast_forward();
         
        })
        audio.addEventListener('pause',function(){
-          document.querySelector('.icon-play').classList.remove('unactive');
-          document.querySelector('.icon-pause').classList.add('unactive');
+        changeIcon();
           cd.pause();
         
        })
@@ -181,12 +175,12 @@ const app  = {
          app.currentIndex=index; 
          cd.pause();
          playing = false;
-         changeIconPlay();
+         changeIcon();
          app.loadCurrentSong(); 
          
          setTimeout(function(){
            audio.play();
-         },1000);     
+         },1500);     
          
     
       }

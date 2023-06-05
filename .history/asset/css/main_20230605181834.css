@@ -44,7 +44,6 @@ header h2 {
     margin: auto;
     background-image: url('https://yt3.googleusercontent.com/mm2-5anuZ6ghmK2zL6QM7wciD6kuupOfOagiAh5vZE1hx9tRhKEXTAExZUUY4PVq2RSw9jBpBQ=s900-c-k-c0x00ffffff-no-rj');
     /* animation: rotate 2s infinite linear;   */
-    background-position:50% 50%;
 }
   .control{
     margin-top: 2rem;
@@ -122,7 +121,7 @@ user-select: none;
     height: auto;
 }
 .item{
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Lato', sans-serif;
     width: calc(100% - 54px);
     height: 7rem;
     background-color: #fff;
