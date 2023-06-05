@@ -106,9 +106,7 @@ const app  = {
    function nextSong() {
     if(app.currentIndex < app.songs.length - 1){
       const listItem  = playlist.children ;
-      listItem[app.currentIndex].classList.remove('active');
       app.currentIndex++;  
-      listItem[app.currentIndex].classList.add('active');
         cd.pause();
         playing = false;
         changeIconPlay();
@@ -124,9 +122,7 @@ const app  = {
     function preSong(){
         if(app.currentIndex > 0 ){
           const listItem  = playlist.children ;       
-          listItem[app.currentIndex].classList.remove('active');
           app.currentIndex--;  
-          listItem[app.currentIndex].classList.add('active'); 
             cd.pause();
             playing = false;
             changeIconPlay();

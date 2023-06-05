@@ -61,7 +61,8 @@ const app  = {
        this.songs.forEach(item =>{
           creat(item);
        })
-       
+       const listItem  = playlist.children ;
+       listItem[0].classList.add('active');
     },
     loadCurrentSong : function(){
       audio.src= this.songs[this.currentIndex].path;
@@ -105,10 +106,7 @@ const app  = {
   //handle next and pre song 
    function nextSong() {
     if(app.currentIndex < app.songs.length - 1){
-      const listItem  = playlist.children ;
-      listItem[app.currentIndex].classList.remove('active');
-      app.currentIndex++;  
-      listItem[app.currentIndex].classList.add('active');
+        app.currentIndex++;  
         cd.pause();
         playing = false;
         changeIconPlay();
@@ -117,16 +115,15 @@ const app  = {
         setTimeout(function(){
           audio.play();
         },1000);
-       
      }
+     const listItem  = playlist.children ;
+     listItem[currentIndex].classList.add('active');
+    
    }
 
     function preSong(){
         if(app.currentIndex > 0 ){
-          const listItem  = playlist.children ;       
-          listItem[app.currentIndex].classList.remove('active');
-          app.currentIndex--;  
-          listItem[app.currentIndex].classList.add('active'); 
+            app.currentIndex--;  
             cd.pause();
             playing = false;
             changeIconPlay();
@@ -176,16 +173,14 @@ const app  = {
      
      function handleSelector(e){
          const listItem  = playlist.children ;
+         listItem[0].classList.add('active');
          let index = [...listItem].findIndex((item)=>{
             return item.contains(e.target);
          });
           //handl change color 
           listItem[index].classList.add('active');
-          let nodelist = document.querySelectorAll('.item.active');
           if(app.currentIndex !== index){
              listItem[app.currentIndex].classList.remove('active');
-          }else if (nodelist.length > 1){              
-                 nodelist[0].classList.remove('active');
           }
          //handle change song !
          app.currentIndex=index; 
